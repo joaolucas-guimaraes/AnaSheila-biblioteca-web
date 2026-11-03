@@ -48,8 +48,7 @@ return { ...livro, autor };
 export async function criarLivro(dados) {
 await esperar();
 const livros = ler('livros', livrosIniciais);
-if (livros.some((l) => l.isbn === dados.isbn)) throw erroHttp(409, 'Já existe um livro com esse
-ISBN');
+if (livros.some((l) => l.isbn === dados.isbn)) throw erroHttp(409, 'Já existe um livro com esse ISBN');
 const novo = { ...dados, _id: novoId() };
 salvar('livros', [...livros, novo]);
 return novo;
